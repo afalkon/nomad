@@ -1,0 +1,32 @@
+<style>
+    .main{
+        background-color: coral;
+        padding: 50px;
+        display: flex;
+    }
+    .aside{
+        width: 300px;
+        height: 600px;
+        background-color: blue;
+        font-size: 32px;
+        color: #fff;
+    }
+    .content{
+        background-color: #fff;
+        width: 600px;
+        height: 800px;
+        font-size: 32px;
+        color: #000;
+    }
+</style>
+
+<main class="main">
+    <aside class="aside">
+        Sidebar
+    </aside>
+    <div class="content">
+        <p>Main content</p>
+        <p><?php echo "$content"; ?></p>
+        <?php require ROOT . 'templates/main/main.html'; ?>
+    </div>
+</main>

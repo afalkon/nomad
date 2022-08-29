@@ -1,0 +1,2 @@
+login: 	info.admin@mail.com
+pass:	123456789
