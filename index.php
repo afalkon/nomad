@@ -69,6 +69,9 @@ switch ($uriModule){
     case 'blog':
         require ROOT . 'app/modules/blog/index.php';
         break;
+    case 'addComment':
+        require ROOT . 'app/modules/blog/addComment.php';
+        break;
     case 'contacts':
         require ROOT . 'app/modules/contacts/index.php';
         break;

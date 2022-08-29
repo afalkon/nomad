@@ -19,46 +19,11 @@
     <?php include ROOT . "app/templates/_parts/_pagination/_page-post-pag.tpl"; ?>
 
 </section>
-<section class="page-post__comments">
-    <div class="page-post__title">
-        <h2 class="heading">2 комментария </h2>
-    </div>
-    <div class="page-post__comments-comment">
-        <div class="comment">
-            <div class="comment__avatar"><a href="#">
-                    <div class="avatar-small"><img src="<?=HOST?>app/img/avatars/comment-avatars.png" alt="Аватарка" /></div>
-                </a>
-            </div>
-            <div class="comment__data">
-                <div class="comment__user-info">
-                    <div class="comment__username">Джон До</div>
-                    <div class="comment__date"><img src="<?=HOST?>app/img/favicons/clock.svg" alt="Дата публикации" />05 мая 2017 года 15:45</div>
-                </div>
-                <div class="comment__text">
-                    <p>Замечательный парк, обязательно отправлюсь туда этим летом.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="page-post__comments-comment">
-        <div class="comment">
-            <div class="comment__avatar"><a href="#">
-                    <div class="avatar-small"><img src="<?=HOST?>app/img/avatars/comment-avatar-02.jpg" alt="Аватарка" /></div>
-                </a>
-            </div>
-            <div class="comment__data">
-                <div class="comment__user-info">
-                    <div class="comment__username">Джейн Смитт</div>
-                    <div class="comment__date"><img src="<?=HOST?>app/img/favicons/clock.svg" alt="Дата публикации" />05 Мая 2017 года в 15:45</div>
-                </div>
-                <div class="comment__text">
-                    <p>Замечательный парк, обязательно отправлюсь туда этим летом.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
+
+
+<?php include ROOT . "app/templates/_parts/_comments.tpl"; ?>
+<?php include ROOT . "app/templates/_parts/_comment-form.tpl"; ?>
 <section class="page-post__see-also">
     <div class="container">
         <div class="page-post__title">

@@ -17,6 +17,18 @@ foreach($idArr as $index => $value){
     }
 }
 
+$sqlQueryComments = 'SELECT comments.comment, comments.user, comments.timestamp,
+                            users.name, users.surname, users.avatarsmall
+                    FROM `comments` LEFT JOIN `users` ON comments.user = users.id
+                    WHERE comments.post = ?';
+$comments = R::getALL($sqlQueryComments, [$post['id']]);
+
+$commentsNum = count($comments);
+$lastNum = substr($commentsNum, -1);
+
+/* print_r($comments);
+die(); */
+
 
 // Буферизация вывода
 ob_start();
