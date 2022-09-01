@@ -2,10 +2,22 @@
 
 $pageTitle = "Профиль пользователя";
 
+require ROOT . 'app/libs/functions.php';
+
 
 if (isset($_GET['id'])){
     $user = R::load('users', $_GET['id']);
 }
+
+
+// Finding user's comments and posts
+
+$sqlQuery = 'SELECT
+                comments.id, comments.comment, comments.post, comments.user, comments.timestamp, 
+                posts.title
+            FROM `comments` LEFT JOIN `posts` on comments.post = posts.id
+            WHERE comments.user = ?';
+$comments = R::getAll($sqlQuery, [$_GET['id']]);
 
 
 //Показ профилья незалогиненному пользователю

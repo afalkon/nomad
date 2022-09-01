@@ -25,7 +25,7 @@
             </div>
             <div class="comment__data">
                 <div class="comment__user-info">
-                    <div class="comment__username"><?=$comment['name']?> <?=$comment['surname']?></div>
+                    <a href="<?=HOST?>profile?id=<?=$comment['user']?>" class="comment__username"><?=$comment['name']?> <?=$comment['surname']?></a>
                     <div class="comment__date"><img src="<?=HOST?>app/img/favicons/clock.svg" alt="Дата публикации" /><?=rus_date("j F Y, H:i", $comment['timestamp'])?></div>
                 </div>
                 <div class="comment__text">
