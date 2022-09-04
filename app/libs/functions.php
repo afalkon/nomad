@@ -184,3 +184,44 @@ function saveUploadedImg($inputFileName, $minSize, $maxFileSize, $folderName, $f
 		return [$dbFileName, $dbFileNameSmall];
 	}
 }
+
+// Uploaded files from messages
+// saveUploadedFile('uploadedFile', 'message-files')
+function saveUploadedFile($inputFileName, $folderName){
+
+	if (!empty(!empty($_FILES[$inputFileName]['name']))){
+
+		// Получаем данные из массива $_FILES
+		$fileName =     $_FILES[$inputFileName]['name'];
+		$fileTmpLoc =   $_FILES[$inputFileName]['tmp_name'];
+		$fileType =     $_FILES[$inputFileName]['type'];
+		$fileSize =     $_FILES[$inputFileName]['size'];
+		$fileErrMsg =   $_FILES[$inputFileName]['error'];
+
+		// Получаем расширение файла
+		$kaboom = explode(".", $fileName);
+		$fileExt = end($kaboom);
+
+		if (!preg_match("/\.(gif|jpg|jpeg|png|pdf|rar|zip|doc|docx)$/i", $fileName)){
+			$_SESSION['errors'][] = [   'title' => 'Неверный формат файла.', 
+										'desc' => 'Формат загружаемого файла должен быть .gif, .jpg, .jpeg, .png, .pdf, .zip, .rar, .doc или .docx.'];
+		}
+		if ($fileErrMsg == 1) {
+			$_SESSION['errors'][] = [   'title' => 'При загрузке файла произошла ошибка. Попробуйте позже.', 
+										'desc' => 'Если ошибка появляется снова - обратитесь в службу поддержки.'];
+		}
+
+		if (empty($_SESSION['errors'])){
+			
+			// Путь для хранения
+			$coverFolderLoc = ROOT . "app/usercontent/{$folderName}/";
+
+			/* Generating name for file and upload */
+			$dbFileName = rand(1000000, 9999999) . "." . $fileExt;
+			$filePath = $coverFolderLoc . $dbFileName;
+
+			$uploadResult = move_uploaded_file($fileTmpLoc, $filePath);
+		}
+		return $dbFileName;
+	}
+}

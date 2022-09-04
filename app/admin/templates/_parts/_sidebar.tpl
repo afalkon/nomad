@@ -26,15 +26,23 @@
                     </div>Страницы
                 </a>
             </li>
-            <li class="control-panel__list-item"><a class="control-panel__list-link" href="#">
+            <li class="control-panel__list-item"><a class="control-panel__list-link" href="<?=HOST?>admin/contacts">
+                    <div class="control-panel__list-img-wrapper"><img class="control-panel__list-img" src="<?=HOST?>app/img/control-panel/contact_mail.svg" alt="icon" />
+                    </div>Контакты
+                </a>
+            </li>
+            <li class="control-panel__list-item"><a class="control-panel__list-link" href="<?=HOST?>admin/messages">
                     <div class="control-panel__list-img-wrapper"><img class="control-panel__list-img" src="<?=HOST?>app/img/control-panel/mail.svg" alt="icon" />
-                        <div class="control-panel__list-img-badge">8</div>
+                        
+                        <?php if($unreadNum != 0): ?>
+                            <div class="control-panel__list-img-badge"><?=$unreadNum?></div>
+                        <?php endif; ?>
                     </div>Сообщения
                 </a>
             </li>
             <li class="control-panel__list-item"><a class="control-panel__list-link" href="#">
                     <div class="control-panel__list-img-wrapper"><img class="control-panel__list-img" src="<?=HOST?>app/img/control-panel/message.svg" alt="icon" />
-                        <div class="control-panel__list-img-badge">15</div>
+                        <!-- <div class="control-panel__list-img-badge">15</div> -->
                     </div>Комментарии
                 </a>
             </li>

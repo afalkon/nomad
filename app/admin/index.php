@@ -7,7 +7,11 @@ require_once ROOT . "app/libs/functions.php";
 
 
 $_SESSION['errors'] = array();
-$_SESSION['success'] = array(); 
+$_SESSION['success'] = array();
+
+// Счётчик новых сообщений
+$unreadMsg = R::getAll('SELECT * FROM messages WHERE unread = 1');
+$unreadNum = count($unreadMsg);
 
 // Start of session
 session_start();
@@ -51,6 +55,16 @@ switch ($uriModule){
         break;
     case 'admin/category-delete':
         require ROOT . 'app/admin/modules/categories/category-delete.php';
+        break;
+
+    // :::::::::::::::::: Categories ::::::::::::::::::
+    case 'admin/contacts':
+        require ROOT . 'app/admin/modules/contacts/contacts.php';
+        break;
+
+    // :::::::::::::::::: Messages ::::::::::::::::::
+    case 'admin/messages':
+        require ROOT . 'app/admin/modules/messages/messages.php';
         break;
 
     // :::::::::::::::::: Default ::::::::::::::::::

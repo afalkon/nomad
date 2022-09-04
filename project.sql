@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 01 2022 г., 14:44
+-- Время создания: Сен 04 2022 г., 17:19
 -- Версия сервера: 10.1.48-MariaDB
 -- Версия PHP: 7.1.33
 
@@ -74,6 +74,56 @@ INSERT INTO `comments` (`id`, `user`, `post`, `comment`, `timestamp`) VALUES
 (12, 4, 39, 'А чё я сделаю... ничего...', 1661870633),
 (13, 4, 38, 'Себя зачаруй', 1661870698),
 (14, 4, 1, 'Почему я тут не админ?', 1661870748);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `about_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `about_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `services_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `services_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `contacts_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contacts_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `about_title`, `about_text`, `services_title`, `services_text`, `contacts_title`, `contacts_text`) VALUES
+(1, 'Обо мне', '<p>Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. Этот сайт я сделал в рамках обучения в школе онлайн обучения WebCademy. Чуть позже я обновлю в нём свой контент. А пока посмотрите, как тут всё классно!</p>\r\n', 'Направления, которыми я занимаюсь', '<ul>\r\n	<li>\r\n	<h3><strong>Верстка сайтов</strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>Frontend</strong></h3>\r\n	</li>\r\n	<li>\r\n	<h3><strong>UI/UX дизайн</strong></h3>\r\n	</li>\r\n</ul>\r\n', 'Контакты', '<p><strong>Email:</strong>&nbsp;<a href=\"mailto:hi@digitalnomad.pro\">hi@digitalnomad.pro</a></p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (905) 555-77-88</a></p>\r\n\r\n<p><strong>Адрес:</strong> Москва, Пресненская набережная, д. 6, стр. 2</p>\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `message` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `unread` tinyint(1) UNSIGNED DEFAULT NULL,
+  `timestamp` int(11) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `email`, `message`, `file_name`, `unread`, `timestamp`) VALUES
+(4, 'Mehrunes Dagon', 'mehrunes@gmail.com', 'Сделайте меня админом! Уже три месяца прошу!', NULL, 0, 1662296195),
+(8, 'Boethiah', 'boethiah@mail.com', 'Новая фотография Солитьюда! Очень красиво!', '6698826.jpg', 0, 1662299152),
+(9, 'Alexey Mavlin', 'falconfinance.alex@gmail.com', 'Посылаю архив с проектом!', '4444586.zip', 0, 1662300738),
+(10, 'Olga Novicova', 'olga.novicova@aauni.edu', 'Предлагаю свои услуги по дизайну! Обращайтесь!', NULL, 1, 1662300956),
+(11, 'Nocturnal', 'nocturnal@mail.com', 'Дайджест по местам удачи в Скариме.', '5665237.zip', 0, 1662301004);
 
 -- --------------------------------------------------------
 
@@ -163,6 +213,18 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `posts`
 --
 ALTER TABLE `posts`
@@ -189,6 +251,18 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `comments`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT для таблицы `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `posts`
